@@ -223,9 +223,8 @@ program main
      
      !!now we look for the rotational constants and store them in the array
 
-  
-     read(129,'(A32,2ES8.2)') auxchprev, (rotconst(ij,jk), ij=1,2)
-
+     rotconst(:,jk)=zero
+     read(129,'(A31,2E8.4)') auxchprev, (rotconst(ij,jk), ij=1,2)
   end if
 
 end do
