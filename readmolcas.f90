@@ -129,7 +129,12 @@ program main
   open(124,file=radiusfile,status='old')
   open(125,file=energyfile,status='old')
   open(126,file=dipolefile,status='old')
-  open(127,file=polfile,status='old')
+
+  !! check if the polarizability file exist
+  
+  Inquire(FILE=trim(polfile), EXIST=existe)
+  if (existe) open(127,file=polfile,status='old')
+  
   open(129,file=rotconstfile,status='old')
 
   do jk=1,lineas
@@ -165,7 +170,9 @@ program main
      !! first we look for alphaxx
 
      !! we read line where the polarizability section starts
-     
+
+     Inquire(FILE=trim(polfile), EXIST=existe)
+     if (existe) then
      read(127,*,IOSTAT=fin) auxchprev
 
      if (fin.ne.0) then
@@ -213,19 +220,22 @@ program main
      do ik=1,3
         polarizabilities(ik,jk)=alpha(ik,ik)
      end do     
-
+     
      !!now we look for the rotational constants and store them in the array
 
+  
      read(129,'(A32,2ES8.2)') auxchprev, (rotconst(ij,jk), ij=1,2)
-     
-  end do
 
+  end if
+
+end do
+  
   !! Now we write everything in a file
-  close(124)
-  close(125)
-  close(126)
-  close(127)
-  close(129)
+!  close(124)
+!  close(125)
+!  close(126)
+!  close(127)
+!  close(129)
 
   !! set output file
 
