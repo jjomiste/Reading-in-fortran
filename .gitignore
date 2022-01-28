@@ -34,3 +34,5 @@
 # Data file
 *.dat
 *.txt
+fort*
+auxiliarfile
