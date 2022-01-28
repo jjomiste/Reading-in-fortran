@@ -98,6 +98,27 @@ program main
 
   CALL EXECUTE_COMMAND_LINE(comando,wait=.true.)
 
+  write(comando,'(3A)') "wc ", trim(polfile), " >> fort.111"
+
+  CALL EXECUTE_COMMAND_LINE(comando,wait=.true.)
+
+  !! if the polfile is empty then we delete it
+  
+  ij=1
+  
+  read(111,*) ij
+
+  if (ij.eq.0) then
+  write(comando,'(2A)') "rm -rf ", polfile
+
+  CALL EXECUTE_COMMAND_LINE(comando,wait=.true.)
+
+  write(comando,'(2A)') "rm -rf ", rotconstfile
+
+  CALL EXECUTE_COMMAND_LINE(comando,wait=.true.)
+     
+  end if
+  
   !! now read the rotational constants
 
   write(comando,'(A,A)') "rm -f ", rotconstfile
