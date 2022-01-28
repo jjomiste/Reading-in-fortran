@@ -158,9 +158,9 @@ program main
   
   open(129,file=rotconstfile,status='old')
 
-  do jk=1,lineas
+  do jk=1,lineas-1
 
-     write(*,'(A,I2.1, A, I2.2)') 'Reading coordinate ', jk, ' out of ', lineas
+     write(*,'(A,I3.2, A, I3.2)') 'Reading coordinate ', jk, ' out of ', lineas
      
      read(124,'(A)') auxchprev
 
