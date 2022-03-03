@@ -1,0 +1,5 @@
+1. Hay que cargar la variable que estamos modificando, es decir, la distancia entre los carbonos, el ángulo, etc. Se escribe entre corchetes, y cada uno de los números entre comillas.
+
+2. Ejecutar python read_energies.py path raiz_archivo
+
+3. El fichero de salida que aparece es PES_'raiz_archivo'.dat. La primera columna corresponde a la variable que estás cambiando, y las demás columnas son las energías de cada estado.
